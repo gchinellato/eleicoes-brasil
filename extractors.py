@@ -521,7 +521,7 @@ class VotacaoZonaExtractor(Extractor):
             (
                 row.codigo_situacao_candidatura,
                 row.situacao_candidatura,
-            ): row.nova_situacao_candidatura
+            ): row.nova_descricao_situacao_candidatura
             for row in rows.import_from_csv(
                 settings.HEADERS_PATH / f"situacao-candidatura.csv",
             )
@@ -537,7 +537,7 @@ class VotacaoZonaExtractor(Extractor):
         uf = self.extract_state_from_filename(internal_filename)
         if year < 2014:
             header_year = "1994"
-        elif 2014 <= year <= 2018:
+        elif 2014 <= year <= 2020:
             header_year = "2014"
         else:
             raise ValueError("Unrecognized year")
